@@ -5,3 +5,93 @@
 .position{
     color: #777;
 }
+.date{
+    font-size: 13px;
+    font-weight: 500;
+    color: #777;
+}
+
+.skill{
+    padding: 5px;
+    border: 1px solid #868484;
+    border-radius: 5px;
+    background: #49679c;
+    font-size: 14px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.skill-name{
+    font-size: 15px;
+    font-weight: 700;
+    color: #3c3c3c;
+    margin-bottom: 15px;
+}
+
+.page-padding{
+    padding: 15px 0;
+}
+
+.sidenav {
+    width: 315px;
+    position: fixed;
+    z-index: 1;
+    top: 7px;
+    left: 15px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.main {
+    margin-left: 330px; /* Same width as the sidebar + left position in px */
+    padding: 0px 10px;
+}
+.mail{
+    font-size: 15px;
+    color: #424242;
+    margin-left: 15px;
+}
+
+.link{
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.heading{
+    display: table-cell; 
+    margin-left:15px
+}
+
+@media screen and (max-width: 768px) {
+    .sidenav {
+        width: 100%;
+        position: relative;
+        left: 0px;
+        padding: 10px 10px;
+    }
+
+    .main {
+        margin-left: 0px; /* Same width as the sidebar + left position in px */
+        padding: 10px 10px;
+    }
+    .heading{
+        display: table-cell; 
+        margin-left:15px;
+    }
+}
+
+@media (min-width: 340px){
+
+.col-sm-11, .col-xs-11, .col-md-11{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 91.666667%;
+    flex: 0 0 91.666667%;
+    max-width: 91.666667%;
+    }
+
+    .heading{
+        display: table-cell; 
+        margin-left:8px;
+    }
+}

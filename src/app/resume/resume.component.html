@@ -1,77 +1,142 @@
-<div class="">
+<div class="page-padding">
 
-      <div class="row">
-    <div class="col-md-3">
-        
-        <mat-card>
-          
-          <img src="https://lh4.googleusercontent.com/-8sUve5oo1JA/AAAAAAAAAAI/AAAAAAAACrM/usQsCxc2S-w/photo.jpg" class="rounded-circle mx-auto d-block img-thumbnail" width="120px" alt="">
-          
-          <h1></h1>
-          <h4 class="text-center">
+  <div class="row">
+    <div class="sidenav">
 
-            Sowkatali Patan
-          </h4>
-          <p class="text-center position">
-            Web Developer
-          </p>
+      <mat-card>
+        <img *ngIf="resume.basics.picture != ''" src="{{resume.basics.picture}}" class="rounded-circle mx-auto d-block img-thumbnail"
+          width="120px" alt="">
+        <div>
 
-          <div class="dropdown-divider"></div>
-          <div>
-          <i class="far fa-envelope fa-lg"></i> <a href="mailto:shaukathpatan@gmail.com">shaukathpatan@gmail.com</a>
+          <img *ngIf="resume.basics.picture == ''" src="/assets/images/user_account.svg" class="rounded-circle mx-auto d-block img-thumbnail"
+            width="120px" alt="">
         </div>
-          <div>
-          <i class="fas fa-link fa-lg"></i> <a href="https://sowkat-ali.firebaseapp.com/">https://sowkat-ali.firebaseapp.com/</a>
+        <h4 class="text-center">
+
+          {{resume.basics.name}}
+        </h4>
+        <p class="text-center position">
+          {{resume.basics.label}}
+        </p>
+
+        <div class="dropdown-divider"></div>
+        <div class="text-center">
+          <i class="far fa-envelope fa-lg"></i>
+          <a href="mailto:{{resume.basics.email}}" class="mail">{{resume.basics.email}}</a>
+        </div>
+        <div class="text-center">
+          <i class="fas fa-link fa-lg"></i>
+          <a href="{{resume.basics.website}}" class="link" >{{resume.basics.website}}</a>
+        </div>
+
+        <div class="dropdown-divider"></div>
+        <div class="text-center">
+        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="#"><i class="fab fa-facebook-f fa-lg"></i></a>
+        </div>
+      </mat-card>
+    </div>
+    <div class="main">
+      <mat-card>
+
+        <h2>Background</h2>
+        <div class="dropdown-divider"></div>
+        <div class="row">
+          <div class="heading" >
+            <i class="far fa-address-card fa-lg"></i>
           </div>
-
-          <div class="dropdown-divider"></div>
-          <i class="fab fa-twitter fa-lg"></i><i class="fab fa-facebook-f fa-lg"></i>
-        </mat-card>
-    </div>
-    <div class="col-md-9">
-        <mat-card>
-
-            <h2>Background</h2>
+          <div class="col-md-11 col-sm-11 col-xs-11">
+            <h4>
+              About
+            </h4>
             <div class="dropdown-divider"></div>
-            <div class="row">
-            <div class="" style="display: table-cell; margin-left:15px;">
-                <i class="far fa-address-card fa-lg"></i>
-            </div>
-            <div class="col-md-11">
-              <h4>
+            <p>{{resume.basics.summary}}</p>
+          </div>
+        </div>
 
-                About
-              </h4>
+        <div class="row">
+          <div class="heading">
+            <i class="far fa-building fa-lg"></i>
+          </div>
+          <div class="col-md-11 col-sm-11 col-xs-11">
+            <h4>
+              Work Experience
+            </h4>
+            <div *ngFor="let work of resume.works">
               <div class="dropdown-divider"></div>
-              <p>I’m a full stack web developer who loves working with open source technology. 
-                I work best at planning the architecture of web applications and their development life cycles. 
-                I also love to get the community involved and have had much experience with building and organizing 
-                large open source groups. Specialties: React, Redux, Javascript - Full stack developer with lots of 
-                experience in lots of stuff</p>
-              </div>
+              <span>{{work.position}}, </span>
+              <a href="https://piedpiper.com"> {{work.company}}</a>
+              <p>
+                <span class="date">{{work.startDate | date: 'MMM, yyyy'}} - {{work.endDate | date: 'MMM, yyyy'}}</span>
+              </p>
+              <p>{{work.summary}}</p>
+              <ul>
+                <li *ngFor="let highlight of work.highlights ">{{highlight}}</li>
+              </ul>
             </div>
+          </div>
+        </div>
 
-            <div class="row">
-                <div class="" style="display: table-cell; margin-left:15px;">
-                    <i class="far fa-building fa-lg"></i>
-                </div>
-                <div class="col-md-11">
-                  <h4>
-    
-                    Work
-                  </h4>
-                  <div class="dropdown-divider"></div>
-                  <span>CEO/President, </span> <a href="https://piedpiper.com"> Pied Piper</a>
-                  <p>I’m a full stack web developer who loves working with open source technology. 
-                    I work best at planning the architecture of web applications and their development life cycles. 
-                    I also love to get the community involved and have had much experience with building and organizing 
-                    large open source groups. Specialties: React, Redux, Javascript - Full stack developer with lots of 
-                    experience in lots of stuff</p>
-                  </div>
-                </div>
-            
-          </mat-card>
+        <div class="row">
+          <div class="heading">
+            <i class="fas fa-cogs fa-lg"></i>
+          </div>
+          <div class="col-md-11 col-sm-11 col-xs-11">
+            <h4>
+              Skills
+            </h4>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let skill of resume.skills">
+              <h5 class="skill-name">{{skill.name}}</h5>
+              <span *ngFor="let keyword of skill.keywords" class="skill">{{keyword}} </span>
+              <div class="dropdown-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="heading">
+            <i class="fas fa-graduation-cap fa-lg"></i>
+          </div>
+          <div class="col-md-11 col-sm-11 col-xs-11">
+            <h4>
+              Education
+            </h4>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let education of resume.education">
+              <p>
+                <span>{{education.area}}, {{education.studyType}}, {{education.institution}}</span>
+              </p>
+              <p>
+                <span class="date">{{education.startDate | date: 'MMM, yyyy'}} - {{education.endDate | date: 'MMM, yyyy'}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="heading">
+            <i class="fas fa-thumbs-up fa-lg"></i>
+          </div>
+          <div class="col-md-11 col-sm-11 col-xs-11">
+            <h4>
+              References
+            </h4>
+            <div class="dropdown-divider"></div>
+            <div *ngFor="let reference of resume.references">
+              <p>
+                <span>{{reference.name}},</span>
+              </p>
+              <p>
+                <span>{{reference.reference}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+      </mat-card>
     </div>
-  
+
   </div>
 </div>
