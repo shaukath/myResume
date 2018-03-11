@@ -8,7 +8,7 @@ export class ResumeService {
   constructor(private http: HttpClient) { }
 
   getResumeDetails() {
-    const apiURL = 'http://registry.jsonresume.org/json/resume.json';
+    const apiURL = 'https://registry.jsonresume.org/json/resume.json';
     return this.http.get(apiURL);
   }
 
